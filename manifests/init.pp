@@ -12,7 +12,7 @@ class aegir {
 class aegir::frontend {
   include aegir::backend
 
-  if $aegir_hostmaster_url { exec {"/bin/bash -c 'echo debconf aegir/site string $aegir_hostmaster_url | debconf-set-selections'": before  => Package['aegir'], } }
+  if $aegir_hostmaster_url { exec {"echo debconf aegir/site string $aegir_hostmaster_url | debconf-set-selections": before  => Package['aegir'], } }
   if $aegir_db_host {        exec {"echo debconf aegir/db_host string $aegir_db_host | debconf-set-selections": before  => Package['aegir'], } }
   if $aegir_db_user {        exec {"echo debconf aegir/db_user string $aegir_db_user | debconf-set-selections": before  => Package['aegir'], } }
   if $aegir_db_password {    exec {"echo debconf aegir/db_password string $aegir_db_password | debconf-set-selections": before  => Package['aegir'], } }
